@@ -45,57 +45,57 @@
 <h2 id="post-tasks">POST /tasks</h2>
 <pre class="highlight javascript"><code><span class="p">{</span> 
   <span class="nl">title</span> <span class="p">:</span> <span class="s1">'email me some positive thoughts. I am feeling down!'</span>
-      <span class="nx">title</span> <span class="nx">or</span> <span class="kr">short</span> <span class="nx">description</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">task</span>
-      <span class="nx">displayed</span> <span class="nx">prominently</span> <span class="k">in</span> <span class="nx">task</span> <span class="nx">listings</span> <span class="nx">and</span> <span class="nx">such</span>
-      <span class="nx">some</span> <span class="nx">listing</span> <span class="nx">display</span> <span class="nx">shorter</span> <span class="nx">portions</span> <span class="k">if</span> <span class="nx">you</span> <span class="nx">put</span> <span class="nx">a</span> <span class="kr">long</span> <span class="nx">title</span>
-      <span class="nx">expect</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">shown</span> <span class="k">in</span> <span class="nx">many</span> <span class="nx">places</span> <span class="kd">with</span> <span class="nx">ellipsis</span>
+      <span class="cm">/*title or short description of the task
+      displayed prominently in task listings and such
+      some listing display shorter portions if you put a long title
+      expect to be shown in many places with ellipsis
 
-      <span class="nx">required</span> 
-
+      required */</span>
+      <span class="p">,</span>
   <span class="nx">description</span>  <span class="err">:</span>  <span class="s1">''</span>
-      <span class="nx">longer</span><span class="o">/</span><span class="nx">full</span> <span class="nx">description</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">task</span>
-      <span class="nx">typically</span> <span class="nx">displayed</span> <span class="nx">when</span> <span class="nx">showing</span> <span class="nx">a</span> <span class="nx">single</span> <span class="nx">task</span>
+     <span class="cm">/* longer/full description of the task
+      typically displayed when showing a single task
 
-      <span class="nx">optional</span> 
-      <span class="nx">empty</span> 
+      optional 
+      empty */</span>
+    <span class="p">,</span>
+  <span class="nx">deadline</span>  <span class="err">:</span>  <span class="nx">date</span>
+      <span class="cm">/*deadline for the task
+      datetime in whatever is the standard form an API
 
-  <span class="nx">deadline</span>  <span class="err">:</span> 
-      <span class="nx">deadline</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">task</span>
-      <span class="nx">datetime</span> <span class="k">in</span> <span class="nx">whatever</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">standard</span> <span class="nx">form</span> <span class="nx">an</span> <span class="nx">API</span>
+      optional  
+      default to 24 hrs from submission time
+      negative or 0 means asap and changes into now (plus + estimate)*/</span>
+<span class="p">,</span>
 
-      <span class="nx">optional</span>  
-      <span class="k">default</span> <span class="nx">to</span> <span class="mi">24</span> <span class="nx">hrs</span> <span class="nx">from</span> <span class="nx">submission</span> <span class="nx">time</span>
-      <span class="nx">negative</span> <span class="nx">or</span> <span class="mi">0</span> <span class="nx">means</span> <span class="nx">asap</span> <span class="nx">and</span> <span class="nx">changes</span> <span class="nx">into</span> <span class="nx">now</span> <span class="p">(</span><span class="nx">plus</span> <span class="o">+</span> <span class="nx">estimate</span><span class="p">)</span>
+  <span class="nx">estimate</span> <span class="err">:</span> <span class="mi">300</span>  <span class="c1">//assuming that the units is "seconds"</span>
+      <span class="cm">/*submitter expectation of time that it would take to finish the task
+      in whatever is the standard unit for time apis
 
+      optional
+      default =&gt; 1 hr*/</span>
 
-  <span class="nl">estimate</span> <span class="p">:</span> <span class="mi">300</span>  <span class="c1">//assuming that the units is "seconds"</span>
-      <span class="nx">submitter</span> <span class="nx">expectation</span> <span class="nx">of</span> <span class="nx">time</span> <span class="nx">that</span> <span class="nx">it</span> <span class="nx">would</span> <span class="nx">take</span> <span class="nx">to</span> <span class="nx">finish</span> <span class="nx">the</span> <span class="nx">task</span>
-      <span class="k">in</span> <span class="nx">whatever</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">standard</span> <span class="nx">unit</span> <span class="k">for</span> <span class="nx">time</span> <span class="nx">apis</span>
+     <span class="p">,</span>
+  <span class="nx">owner</span> <span class="err">:</span>  <span class="s2">"odysseas@ezhome.com"</span>
+      <span class="cm">/*who this task is for
+      using email because it makes the API more easy to use..everyone has the email
+      quite possibly internally the app should always be recording user-id  but allow
+      incoming user references to be email based and outgoing user references are also 
+      converted into the "user's current email" for api friendlyness
 
-      <span class="nx">optional</span>
-      <span class="k">default</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="nx">hr</span>
-
-
-  <span class="nl">owner</span> <span class="p">:</span>  <span class="s2">"odysseas@ezhome.com"</span>
-      <span class="nx">who</span> <span class="k">this</span> <span class="nx">task</span> <span class="nx">is</span> <span class="k">for</span>
-      <span class="nx">using</span> <span class="nx">email</span> <span class="nx">because</span> <span class="nx">it</span> <span class="nx">makes</span> <span class="nx">the</span> <span class="nx">API</span> <span class="nx">more</span> <span class="nx">easy</span> <span class="nx">to</span> <span class="nx">use</span><span class="p">..</span><span class="nx">everyone</span> <span class="nx">has</span> <span class="nx">the</span> <span class="nx">email</span>
-      <span class="nx">quite</span> <span class="nx">possibly</span> <span class="nx">internally</span> <span class="nx">the</span> <span class="nx">app</span> <span class="nx">should</span> <span class="nx">always</span> <span class="nx">be</span> <span class="nx">recording</span> <span class="nx">user</span><span class="o">-</span><span class="nx">id</span>  <span class="nx">but</span> <span class="nx">allow</span>
-      <span class="nx">incoming</span> <span class="nx">user</span> <span class="nx">references</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">email</span> <span class="nx">based</span> <span class="nx">and</span> <span class="nx">outgoing</span> <span class="nx">user</span> <span class="nx">references</span> <span class="nx">are</span> <span class="nx">also</span> 
-      <span class="nx">converted</span> <span class="nx">into</span> <span class="nx">the</span> <span class="s2">"user's current email"</span> <span class="k">for</span> <span class="nx">api</span> <span class="nx">friendlyness</span>
-
-      <span class="nx">optional</span>
-      <span class="nl">default</span> <span class="p">:</span> <span class="nx">the</span> <span class="nx">currently</span> <span class="nx">authenticated</span> <span class="nx">user</span>
-
-  <span class="nl">tags</span> <span class="p">:</span> <span class="s1">'tag1 tag2'</span> <span class="err">#</span> <span class="nx">string</span> <span class="nx">of</span> <span class="nx">tags</span> <span class="nx">separated</span> <span class="nx">by</span> <span class="nx">whitespace</span>
-      <span class="nx">optional</span> 
-      <span class="nx">tags</span> <span class="nx">are</span> <span class="nx">used</span> <span class="nx">as</span> <span class="nx">the</span> <span class="k">catch</span><span class="o">-</span><span class="nx">all</span> <span class="nx">instead</span> <span class="nx">of</span> <span class="nx">structured</span> <span class="nx">filtering</span> <span class="p">(</span><span class="nx">list</span><span class="o">-</span><span class="nx">ing</span><span class="p">)</span> <span class="k">for</span> <span class="nx">now</span>
-
-  <span class="nl">state</span> <span class="p">:</span> <span class="nx">current</span> <span class="nx">task</span> <span class="nx">state</span>
-      <span class="nx">one</span> <span class="nx">of</span> <span class="nx">these</span> <span class="nx">string</span> <span class="nx">values</span><span class="err">:</span>
-        <span class="s1">'queued'</span>
-        <span class="s1">'worked on'</span>
-        <span class="s1">'deleted'</span>
-        <span class="s1">'done'</span>
+      optional
+      default : the currently authenticated user*/</span>
+      <span class="p">,</span>
+  <span class="nx">tags</span> <span class="err">:</span> <span class="s1">'tag1 tag2'</span> <span class="err">#</span> <span class="nx">string</span> <span class="nx">of</span> <span class="nx">tags</span> <span class="nx">separated</span> <span class="nx">by</span> <span class="nx">whitespace</span>
+      <span class="cm">/*optional 
+      tags are used as the catch-all instead of structured filtering (list-ing) for now*/</span>
+      <span class="p">,</span>
+  <span class="nx">state</span> <span class="err">:</span> <span class="s1">'current task state'</span>
+     <span class="cm">/* one of these string values:
+        'queued'
+        'worked on'
+        'deleted'
+        'done'*/</span>
 <span class="p">}</span>
 </code></pre>
 
