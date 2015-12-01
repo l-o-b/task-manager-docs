@@ -51,14 +51,14 @@
       expect to be shown in many places with ellipsis
 
       required */</span>
-  <span class="nx">description</span>  <span class="err">:</span>  <span class="s1">''</span><span class="p">,</span>
+  <span class="nx">description</span> <span class="err">:</span>  <span class="s1">''</span><span class="p">,</span>
      <span class="cm">/* longer/full description of the task
       typically displayed when showing a single task
 
       optional 
       empty */</span>
 
-  <span class="nx">deadline</span>  <span class="err">:</span>  <span class="nx">date</span><span class="p">,</span>
+  <span class="nx">deadline</span> <span class="err">:</span>  <span class="nx">date</span><span class="p">,</span>
       <span class="cm">/*deadline for the task
       datetime in whatever is the standard form an API
 
@@ -83,11 +83,12 @@
       optional
       default : the currently authenticated user*/</span>
 
-  <span class="nx">tags</span> <span class="err">:</span> <span class="s1">'tag1 tag2'</span><span class="p">,</span> <span class="err">#</span> <span class="nx">string</span> <span class="nx">of</span> <span class="nx">tags</span> <span class="nx">separated</span> <span class="nx">by</span> <span class="nx">whitespace</span>
-      <span class="cm">/*optional 
+  <span class="nx">tags</span> <span class="err">:</span> <span class="s1">'tag1 tag2'</span><span class="p">,</span> 
+     <span class="cm">/*string of tags separated by whitespace
+      optional 
       tags are used as the catch-all instead of structured filtering (list-ing) for now*/</span>
 
-  <span class="nl">state</span> <span class="p">:</span> <span class="s1">'current task state'</span>
+  <span class="nx">state</span> <span class="err">:</span> <span class="s1">'current task state'</span>
      <span class="cm">/* one of these string values:
         'queued'
         'worked on'
