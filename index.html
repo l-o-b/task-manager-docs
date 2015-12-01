@@ -44,39 +44,36 @@
 
 <h2 id="post-tasks">POST /tasks</h2>
 <pre class="highlight javascript"><code><span class="p">{</span> 
-  <span class="nl">title</span> <span class="p">:</span> <span class="s1">'email me some positive thoughts. I am feeling down!'</span>
+  <span class="nl">title</span> <span class="p">:</span> <span class="s1">'email me some positive thoughts. I am feeling down!'</span><span class="p">,</span>
       <span class="cm">/*title or short description of the task
       displayed prominently in task listings and such
       some listing display shorter portions if you put a long title
       expect to be shown in many places with ellipsis
 
       required */</span>
-      <span class="p">,</span>
-  <span class="nx">description</span>  <span class="err">:</span>  <span class="s1">''</span>
+  <span class="nx">description</span>  <span class="err">:</span>  <span class="s1">''</span><span class="p">,</span>
      <span class="cm">/* longer/full description of the task
       typically displayed when showing a single task
 
       optional 
       empty */</span>
-    <span class="p">,</span>
-  <span class="nx">deadline</span>  <span class="err">:</span>  <span class="nx">date</span>
+
+  <span class="nx">deadline</span>  <span class="err">:</span>  <span class="nx">date</span><span class="p">,</span>
       <span class="cm">/*deadline for the task
       datetime in whatever is the standard form an API
 
       optional  
       default to 24 hrs from submission time
       negative or 0 means asap and changes into now (plus + estimate)*/</span>
-<span class="p">,</span>
 
-  <span class="nx">estimate</span> <span class="err">:</span> <span class="mi">300</span>  <span class="c1">//assuming that the units is "seconds"</span>
+  <span class="nx">estimate</span> <span class="err">:</span> <span class="mi">300</span><span class="p">,</span>  <span class="c1">//assuming that the units is "seconds"</span>
       <span class="cm">/*submitter expectation of time that it would take to finish the task
       in whatever is the standard unit for time apis
 
       optional
       default =&gt; 1 hr*/</span>
 
-     <span class="p">,</span>
-  <span class="nx">owner</span> <span class="err">:</span>  <span class="s2">"odysseas@ezhome.com"</span>
+  <span class="nx">owner</span> <span class="err">:</span>  <span class="s2">"odysseas@ezhome.com"</span><span class="p">,</span>
       <span class="cm">/*who this task is for
       using email because it makes the API more easy to use..everyone has the email
       quite possibly internally the app should always be recording user-id  but allow
@@ -85,12 +82,12 @@
 
       optional
       default : the currently authenticated user*/</span>
-      <span class="p">,</span>
-  <span class="nx">tags</span> <span class="err">:</span> <span class="s1">'tag1 tag2'</span> <span class="err">#</span> <span class="nx">string</span> <span class="nx">of</span> <span class="nx">tags</span> <span class="nx">separated</span> <span class="nx">by</span> <span class="nx">whitespace</span>
+
+  <span class="nx">tags</span> <span class="err">:</span> <span class="s1">'tag1 tag2'</span><span class="p">,</span> <span class="err">#</span> <span class="nx">string</span> <span class="nx">of</span> <span class="nx">tags</span> <span class="nx">separated</span> <span class="nx">by</span> <span class="nx">whitespace</span>
       <span class="cm">/*optional 
       tags are used as the catch-all instead of structured filtering (list-ing) for now*/</span>
-      <span class="p">,</span>
-  <span class="nx">state</span> <span class="err">:</span> <span class="s1">'current task state'</span>
+
+  <span class="nl">state</span> <span class="p">:</span> <span class="s1">'current task state'</span>
      <span class="cm">/* one of these string values:
         'queued'
         'worked on'
