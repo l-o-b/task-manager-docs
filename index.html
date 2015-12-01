@@ -44,21 +44,21 @@
 
 <h2 id="post-tasks">POST /tasks</h2>
 <pre class="highlight javascript"><code><span class="p">{</span> 
-    <span class="nl">title</span> <span class="p">:</span> <span class="s1">'email me some positive thoughts. I am feeling down!'</span><span class="p">,</span>
+    <span class="nl">title</span><span class="p">:</span> <span class="s1">'email me some positive thoughts. I am feeling down!'</span>
       <span class="cm">/*title or short description of the task
       displayed prominently in task listings and such
       some listing display shorter portions if you put a long title
       expect to be shown in many places with ellipsis
 
       required */</span>
-    <span class="nx">description</span> <span class="err">:</span>  <span class="s1">''</span><span class="p">,</span>
+    <span class="nl">description</span> <span class="p">:</span>  <span class="s1">''</span><span class="p">,</span>
      <span class="cm">/* longer/full description of the task
       typically displayed when showing a single task
 
       optional 
       empty */</span>
 
-    <span class="nx">deadline</span> <span class="err">:</span>  <span class="nx">date</span><span class="p">,</span>
+    <span class="nx">deadline</span><span class="err">:</span>  <span class="nx">date</span>
       <span class="cm">/*deadline for the task
       datetime in whatever is the standard form an API
 
@@ -66,14 +66,14 @@
       default to 24 hrs from submission time
       negative or 0 means asap and changes into now (plus + estimate)*/</span>
 
-    <span class="nx">estimate</span> <span class="err">:</span> <span class="mi">300</span><span class="p">,</span>  <span class="c1">//assuming that the units is "seconds"</span>
+    <span class="nl">estimate</span><span class="p">:</span> <span class="mi">300</span>  <span class="c1">//assuming that the units is "seconds"</span>
       <span class="cm">/*submitter expectation of time that it would take to finish the task
       in whatever is the standard unit for time apis
 
       optional
       default =&gt; 1 hr*/</span>
 
-    <span class="nx">owner</span> <span class="err">:</span>  <span class="s2">"odysseas@ezhome.com"</span><span class="p">,</span>
+    <span class="nl">owner</span><span class="p">:</span>  <span class="s1">'odysseas@ezhome.com'</span>
       <span class="cm">/*who this task is for
       using email because it makes the API more easy to use..everyone has the email
       quite possibly internally the app should always be recording user-id  but allow
@@ -83,12 +83,12 @@
       optional
       default : the currently authenticated user*/</span>
 
-    <span class="nx">tags</span> <span class="err">:</span> <span class="s1">'tag1 tag2'</span><span class="p">,</span>
+    <span class="nl">tags</span><span class="p">:</span> <span class="s1">'tag1 tag2'</span>
      <span class="cm">/*string of tags separated by whitespace
       optional 
       tags are used as the catch-all instead of structured filtering (list-ing) for now*/</span>
 
-    <span class="nx">state</span> <span class="err">:</span> <span class="s1">'current task state'</span>
+    <span class="nl">state</span><span class="p">:</span> <span class="s1">'current task state'</span>
      <span class="cm">/* one of these string values:
         'queued'
         'worked on'
@@ -103,8 +103,6 @@ which includes filled in defaulted empty attributes, (equiv to GET /tasks/5768)<
 <p>The above should be support the use case of the add command.</p>
 
 <h2 id="get-tasks-status-status-amp-owner-owner-amp-n-n">GET /tasks?status=status&amp;owner=owner&amp;n=N</h2>
-
-<p>Returns list of N tasks with the given status and owner (status must be one of the following strings: &lsquo;queued/active/suspended/completed/deleted&rsquo;)</p>
 <pre class="highlight javascript"><code><span class="p">[</span>
     <span class="p">{</span>
         <span class="na">description</span><span class="p">:</span> <span class="s1">'description string'</span><span class="p">,</span>
@@ -127,14 +125,14 @@ which includes filled in defaulted empty attributes, (equiv to GET /tasks/5768)<
 <span class="p">]</span>
 </code></pre>
 
+<p>Returns list of N tasks with the given status and owner (status must be one of the following strings: &lsquo;queued/active/suspended/completed/deleted&rsquo;)</p>
+
 <h2 id="tasks-task_id">/tasks/{task_id}</h2>
 
 <h3 id="get-tasks-task_id">GET /tasks/{task_id}</h3>
-
-<p>Returns task information</p>
-<pre class="highlight javascript"><code><span class="p">{</span>   
+<pre class="highlight javascript"><code><span class="p">{</span>
   <span class="nl">title</span> <span class="p">:</span> <span class="s1">'email me some positive thoughts. I am feeling down!'</span>
-  <span class="nl">description</span>  <span class="p">:</span>  
+  <span class="nl">description</span>  <span class="p">:</span>
   <span class="nl">deadline</span>  <span class="p">:</span> <span class="s1">'2015-11-20T17:31:33Z'</span>
   <span class="nl">estimate</span> <span class="p">:</span> <span class="mi">300</span>
   <span class="nl">owner</span> <span class="p">:</span>  <span class="s1">'odysseas@ezhome.com'</span>
@@ -142,9 +140,9 @@ which includes filled in defaulted empty attributes, (equiv to GET /tasks/5768)<
 
   <span class="cm">/* system attrs */</span>
   <span class="nl">_id</span> <span class="p">:</span> <span class="nx">task_id</span>
-  <span class="nl">_created_by</span> <span class="p">:</span> <span class="s1">'odysseas@ezhome.com'</span>    
-  <span class="nx">_created_on</span> <span class="err">:</span> <span class="s1">'2015-11-20T17:26:33Z'</span> 
-  <span class="nx">_last_modified_on</span> <span class="err">:</span> <span class="s1">'2015-11-20T17:26:33Z'</span>
+  <span class="nl">_created_by</span> <span class="p">:</span> <span class="s1">'odysseas@ezhome.com'</span>
+  <span class="nl">_created_on</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:26:33Z'</span>
+  <span class="nl">_last_modified_on</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:26:33Z'</span>
   <span class="nl">_state</span> <span class="p">:</span> <span class="s1">'queued'</span>
   <span class="nl">_worked_by</span> <span class="p">:</span> <span class="s1">'mary@ezhome.com'</span>            <span class="c1">// if the task is under the control of a worker which worker that is</span>
   <span class="nl">_worked_on</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:26:33Z'</span>       <span class="c1">// if the task is under the control of a worker .. when it was last grabbed */</span>
@@ -154,6 +152,8 @@ which includes filled in defaulted empty attributes, (equiv to GET /tasks/5768)<
 
 <span class="p">}</span>
 </code></pre>
+
+<p>Returns task information</p>
 
 <h3 id="put-tasks-task_id">PUT /tasks/{task_id}</h3>
 <pre class="highlight javascript"><code><span class="p">{</span>   
@@ -213,7 +213,7 @@ Task does not exist.
 
 <p>This command shows chronological history of events and some additional timing information for selected task</p>
 <pre class="highlight javascript"><code><span class="p">{</span>
-  <span class="nl">events</span> <span class="p">:</span> <span class="p">[</span>         <span class="c1">// complete chronoligical history of events</span>
+  <span class="nl">events</span> <span class="p">:</span> <span class="p">[</span><span class="c1">// complete chronoligical history of events</span>
     <span class="p">{</span> <span class="na">when</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:31:33Z'</span><span class="p">,</span> <span class="na">who</span> <span class="p">:</span> <span class="s1">'joe@ezhome.com'</span><span class="p">,</span> <span class="na">what</span> <span class="p">:</span> <span class="s1">'grab'</span> <span class="p">},</span>
     <span class="p">{</span> <span class="na">when</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:31:33Z'</span><span class="p">,</span> <span class="na">who</span> <span class="p">:</span> <span class="s1">'joe@ezhome.com'</span><span class="p">,</span> <span class="na">what</span> <span class="p">:</span> <span class="s1">'grab'</span> <span class="p">},</span>
     <span class="p">{</span> <span class="na">when</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:31:33Z'</span><span class="p">,</span> <span class="na">who</span> <span class="p">:</span> <span class="s1">'joe@ezhome.com'</span><span class="p">,</span> <span class="na">what</span> <span class="p">:</span> <span class="s1">'grab'</span> <span class="p">},</span>
@@ -255,8 +255,6 @@ returns array in the the same format as GET /tasks
 <h1 id="workers">/workers</h1>
 
 <h2 id="post-workers">POST /workers</h2>
-
-<p>Login current user<br/></p>
 <pre class="highlight javascript"><code><span class="nx">request</span><span class="err">:</span>
 <span class="p">{</span>
   <span class="nl">id</span> <span class="p">:</span> <span class="s1">'odysseas@ezhome.com'</span>
@@ -272,13 +270,13 @@ returns array in the the same format as GET /tasks
 <span class="p">}</span>
 </code></pre>
 
-<h2 id="get-workers">GET /workers</h2>
+<p>Login current user</p>
 
-<p>Returns a list of users from the database</p>
+<h2 id="get-workers">GET /workers</h2>
 <pre class="highlight javascript"><code><span class="p">[</span>
-  <span class="p">{</span> 
-    <span class="na">_id</span> <span class="p">:</span> <span class="mi">4567</span>  <span class="err">#</span> <span class="nx">a</span> <span class="nx">worker</span><span class="o">-</span><span class="nx">id</span>
-    <span class="na">userid</span> <span class="p">:</span> <span class="nx">odysseas</span><span class="err">@</span><span class="nx">ezhome</span><span class="p">.</span><span class="nx">com</span>
+  <span class="p">{</span>
+    <span class="na">_id</span> <span class="p">:</span> <span class="mi">4567</span>  <span class="c1">// a worker-id</span>
+    <span class="na">userid</span> <span class="p">:</span> <span class="s1">'odysseas@ezhome.com'</span>
     <span class="na">loggedin_on</span> <span class="p">:</span> <span class="nx">date</span>
     <span class="na">status</span><span class="p">:</span> <span class="s1">'loggedout/loggedin'</span>
   <span class="p">},</span>
@@ -286,9 +284,9 @@ returns array in the the same format as GET /tasks
 <span class="p">]</span>
 </code></pre>
 
-<h2 id="delete-workers">DELETE /workers</h2>
+<p>Returns a list of users from the database</p>
 
-<p>Logs out current user</p>
+<h2 id="delete-workers">DELETE /workers</h2>
 <pre class="highlight plaintext"><code>if user is working from slack
 {
     text: 'You have just logged out! See you again'
@@ -296,6 +294,8 @@ returns array in the the same format as GET /tasks
 </code></pre>
 <pre class="highlight plaintext"><code>else returns empty object
 </code></pre>
+
+<p>Logs out current user</p>
 
 <h2 id="workers-tasks">/workers/tasks</h2>
 
@@ -327,11 +327,8 @@ If status is &ldquo;complete-failure&rdquo; then task becomes completed(but with
 returns informational messages
 </code></p>
 
-<h2 id="workers-user_email">/workers/{user_email}</h2>
-
+<h2 id="workers-user_email">/workers/{user_email}
 <h3 id="get-workers-user_email">GET /workers/{user_email}</h3>
-
-<p>Loads user info from database and returns it</p>
 <pre class="highlight javascript"><code><span class="p">{</span>
     <span class="nl">userid</span> <span class="p">:</span> <span class="s1">'mail@email.com'</span>
     <span class="nl">loggedin_on</span> <span class="p">:</span> <span class="nx">date</span>
@@ -339,11 +336,11 @@ returns informational messages
   <span class="p">}</span>
 </code></pre>
 
+<p>Loads user info from database and returns it</p>
+
 <h2 id="workers-loggedin">/workers/loggedin</h2>
 
 <h3 id="get-workers-loggedin">GET /workers/loggedin</h3>
-
-<p>Returns array containing currently logged users</p>
 <pre class="highlight javascript"><code><span class="p">[</span>
     <span class="p">{</span>
         <span class="na">userid</span> <span class="p">:</span> <span class="s1">'mail@email.com'</span>
@@ -354,9 +351,11 @@ returns informational messages
 <span class="p">]</span>
 </code></pre>
 
+<p>Returns array containing currently logged users</p>
+
 <h1 id="events">/events</h1>
 
-<h2 id="get-events-user-user-amp-type-type-amp-ampn-n-amp-task-task_id">GET /events?user=user&amp;type=type&amp;ampn=N&amp;task=task_id</h2>
+<h2 id="get-events-user-user-amp-type-type-amp-n-n-amp-task-task_id">GET /events?user=user&amp;type=type&amp;n=N&amp;task=task_id</h2>
 <pre class="highlight javascript"><code><span class="p">[</span>
     <span class="p">{</span>
         <span class="na">user</span><span class="p">:</span> <span class="s1">'user@email.com'</span><span class="p">,</span>
