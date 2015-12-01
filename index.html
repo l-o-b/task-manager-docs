@@ -44,21 +44,21 @@
 
 <h2 id="post-tasks">POST /tasks</h2>
 <pre class="highlight javascript"><code><span class="p">{</span> 
-    <span class="nl">title</span><span class="p">:</span> <span class="s1">'email me some positive thoughts. I am feeling down!'</span>
+    <span class="nl">title</span> <span class="p">:</span> <span class="s1">'email me some positive thoughts. I am feeling down!'</span>
       <span class="cm">/*title or short description of the task
       displayed prominently in task listings and such
       some listing display shorter portions if you put a long title
       expect to be shown in many places with ellipsis
 
       required */</span>
-    <span class="nl">description</span> <span class="p">:</span>  <span class="s1">''</span><span class="p">,</span>
+    <span class="nl">description</span> <span class="p">:</span>  <span class="s1">''</span>
      <span class="cm">/* longer/full description of the task
       typically displayed when showing a single task
 
       optional 
       empty */</span>
 
-    <span class="nx">deadline</span><span class="err">:</span>  <span class="nx">date</span>
+    <span class="nl">deadline</span> <span class="p">:</span>  <span class="nx">date</span>
       <span class="cm">/*deadline for the task
       datetime in whatever is the standard form an API
 
@@ -66,14 +66,14 @@
       default to 24 hrs from submission time
       negative or 0 means asap and changes into now (plus + estimate)*/</span>
 
-    <span class="nl">estimate</span><span class="p">:</span> <span class="mi">300</span>  <span class="c1">//assuming that the units is "seconds"</span>
+    <span class="nl">estimate</span> <span class="p">:</span> <span class="mi">300</span>  <span class="c1">//assuming that the units is "seconds"</span>
       <span class="cm">/*submitter expectation of time that it would take to finish the task
       in whatever is the standard unit for time apis
 
       optional
       default =&gt; 1 hr*/</span>
 
-    <span class="nl">owner</span><span class="p">:</span>  <span class="s1">'odysseas@ezhome.com'</span>
+    <span class="nl">owner</span> <span class="p">:</span>  <span class="s1">'odysseas@ezhome.com'</span>
       <span class="cm">/*who this task is for
       using email because it makes the API more easy to use..everyone has the email
       quite possibly internally the app should always be recording user-id  but allow
@@ -83,12 +83,12 @@
       optional
       default : the currently authenticated user*/</span>
 
-    <span class="nl">tags</span><span class="p">:</span> <span class="s1">'tag1 tag2'</span>
+    <span class="nl">tags</span> <span class="p">:</span> <span class="s1">'tag1 tag2'</span>
      <span class="cm">/*string of tags separated by whitespace
       optional 
       tags are used as the catch-all instead of structured filtering (list-ing) for now*/</span>
 
-    <span class="nl">state</span><span class="p">:</span> <span class="s1">'current task state'</span>
+    <span class="nl">state</span> <span class="p">:</span> <span class="s1">'current task state'</span>
      <span class="cm">/* one of these string values:
         'queued'
         'worked on'
@@ -136,7 +136,7 @@ which includes filled in defaulted empty attributes, (equiv to GET /tasks/5768)<
   <span class="nl">deadline</span>  <span class="p">:</span> <span class="s1">'2015-11-20T17:31:33Z'</span>
   <span class="nl">estimate</span> <span class="p">:</span> <span class="mi">300</span>
   <span class="nl">owner</span> <span class="p">:</span>  <span class="s1">'odysseas@ezhome.com'</span>
-  <span class="nl">tags</span> <span class="p">:</span> <span class="p">[</span> <span class="nx">tag1</span> <span class="nx">tag2</span> <span class="p">]</span>
+  <span class="nl">tags</span> <span class="p">:</span> <span class="s1">'tag1 tag2'</span>
 
   <span class="cm">/* system attrs */</span>
   <span class="nl">_id</span> <span class="p">:</span> <span class="nx">task_id</span>
@@ -255,7 +255,8 @@ returns array in the the same format as GET /tasks
 <h1 id="workers">/workers</h1>
 
 <h2 id="post-workers">POST /workers</h2>
-<pre class="highlight javascript"><code><span class="nx">request</span><span class="err">:</span>
+<pre class="highlight javascript"><code>
+<span class="nl">request</span><span class="p">:</span>
 <span class="p">{</span>
   <span class="nl">id</span> <span class="p">:</span> <span class="s1">'odysseas@ezhome.com'</span>
 <span class="p">}</span>
@@ -327,7 +328,8 @@ If status is &ldquo;complete-failure&rdquo; then task becomes completed(but with
 returns informational messages
 </code></p>
 
-<h2 id="workers-user_email">/workers/{user_email}
+<h2 id="workers-user_email">/workers/{user_email}</h2>
+
 <h3 id="get-workers-user_email">GET /workers/{user_email}</h3>
 <pre class="highlight javascript"><code><span class="p">{</span>
     <span class="nl">userid</span> <span class="p">:</span> <span class="s1">'mail@email.com'</span>
