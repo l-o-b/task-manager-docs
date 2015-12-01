@@ -44,21 +44,21 @@
 
 <h2 id="post-tasks">POST /tasks</h2>
 <pre class="highlight javascript"><code><span class="p">{</span> 
-  <span class="nl">title</span> <span class="p">:</span> <span class="s1">'email me some positive thoughts. I am feeling down!'</span><span class="p">,</span>
+    <span class="nl">title</span> <span class="p">:</span> <span class="s1">'email me some positive thoughts. I am feeling down!'</span><span class="p">,</span>
       <span class="cm">/*title or short description of the task
       displayed prominently in task listings and such
       some listing display shorter portions if you put a long title
       expect to be shown in many places with ellipsis
 
       required */</span>
-  <span class="nx">description</span> <span class="err">:</span>  <span class="s1">''</span><span class="p">,</span>
+    <span class="nx">description</span> <span class="err">:</span>  <span class="s1">''</span><span class="p">,</span>
      <span class="cm">/* longer/full description of the task
       typically displayed when showing a single task
 
       optional 
       empty */</span>
 
-  <span class="nx">deadline</span> <span class="err">:</span>  <span class="nx">date</span><span class="p">,</span>
+    <span class="nx">deadline</span> <span class="err">:</span>  <span class="nx">date</span><span class="p">,</span>
       <span class="cm">/*deadline for the task
       datetime in whatever is the standard form an API
 
@@ -66,14 +66,14 @@
       default to 24 hrs from submission time
       negative or 0 means asap and changes into now (plus + estimate)*/</span>
 
-  <span class="nx">estimate</span> <span class="err">:</span> <span class="mi">300</span><span class="p">,</span>  <span class="c1">//assuming that the units is "seconds"</span>
+    <span class="nx">estimate</span> <span class="err">:</span> <span class="mi">300</span><span class="p">,</span>  <span class="c1">//assuming that the units is "seconds"</span>
       <span class="cm">/*submitter expectation of time that it would take to finish the task
       in whatever is the standard unit for time apis
 
       optional
       default =&gt; 1 hr*/</span>
 
-  <span class="nx">owner</span> <span class="err">:</span>  <span class="s2">"odysseas@ezhome.com"</span><span class="p">,</span>
+    <span class="nx">owner</span> <span class="err">:</span>  <span class="s2">"odysseas@ezhome.com"</span><span class="p">,</span>
       <span class="cm">/*who this task is for
       using email because it makes the API more easy to use..everyone has the email
       quite possibly internally the app should always be recording user-id  but allow
@@ -83,12 +83,12 @@
       optional
       default : the currently authenticated user*/</span>
 
-  <span class="nx">tags</span> <span class="err">:</span> <span class="s1">'tag1 tag2'</span><span class="p">,</span> 
+    <span class="nx">tags</span> <span class="err">:</span> <span class="s1">'tag1 tag2'</span><span class="p">,</span>
      <span class="cm">/*string of tags separated by whitespace
       optional 
       tags are used as the catch-all instead of structured filtering (list-ing) for now*/</span>
 
-  <span class="nx">state</span> <span class="err">:</span> <span class="s1">'current task state'</span>
+    <span class="nx">state</span> <span class="err">:</span> <span class="s1">'current task state'</span>
      <span class="cm">/* one of these string values:
         'queued'
         'worked on'
@@ -146,11 +146,11 @@ which includes filled in defaulted empty attributes, (equiv to GET /tasks/5768)<
   <span class="nx">_created_on</span> <span class="err">:</span> <span class="s1">'2015-11-20T17:26:33Z'</span> 
   <span class="nx">_last_modified_on</span> <span class="err">:</span> <span class="s1">'2015-11-20T17:26:33Z'</span>
   <span class="nl">_state</span> <span class="p">:</span> <span class="s1">'queued'</span>
-  <span class="nl">_worked_by</span> <span class="p">:</span> <span class="s1">'mary@ezhome.com'</span>            <span class="err">#</span> <span class="k">if</span> <span class="nx">the</span> <span class="nx">task</span> <span class="nx">is</span> <span class="nx">under</span> <span class="nx">the</span> <span class="nx">control</span> <span class="nx">of</span> <span class="nx">a</span> <span class="nx">worker</span> <span class="nx">which</span> <span class="nx">worker</span> <span class="nx">that</span> <span class="nx">is</span>
-  <span class="nl">_worked_on</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:26:33Z'</span>       <span class="err">#</span> <span class="k">if</span> <span class="nx">the</span> <span class="nx">task</span> <span class="nx">is</span> <span class="nx">under</span> <span class="nx">the</span> <span class="nx">control</span> <span class="nx">of</span> <span class="nx">a</span> <span class="nx">worker</span> <span class="p">..</span> <span class="nx">when</span> <span class="nx">it</span> <span class="nx">was</span> <span class="nx">last</span> <span class="nx">grabbed</span> <span class="o">*</span><span class="sr">/</span><span class="err">
-</span>  <span class="nx">_work_status</span> <span class="err">:</span> <span class="nx">suspended</span> <span class="nx">or</span> <span class="nx">active</span>        <span class="err">#</span> <span class="k">if</span> <span class="nx">the</span> <span class="nx">task</span> <span class="nx">is</span> <span class="nx">under</span> <span class="nx">the</span> <span class="nx">control</span> <span class="nx">of</span> <span class="nx">a</span> <span class="nx">worker</span> 
-  <span class="nx">_completion_status</span> <span class="err">:</span> <span class="nx">success</span> <span class="nx">or</span> <span class="nx">failure</span>   <span class="err">#</span> <span class="k">if</span> <span class="nx">the</span> <span class="nx">test</span> <span class="nx">is</span> <span class="nx">completed</span> 
-  <span class="nx">_completed_on</span> <span class="err">:</span> <span class="s1">'2015-11-20T17:26:33Z'</span>    <span class="err">#</span> <span class="k">if</span> <span class="nx">the</span> <span class="nx">test</span> <span class="nx">is</span> <span class="nx">completed</span> 
+  <span class="nl">_worked_by</span> <span class="p">:</span> <span class="s1">'mary@ezhome.com'</span>            <span class="c1">// if the task is under the control of a worker which worker that is</span>
+  <span class="nl">_worked_on</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:26:33Z'</span>       <span class="c1">// if the task is under the control of a worker .. when it was last grabbed */</span>
+  <span class="nl">_work_status</span> <span class="p">:</span> <span class="nx">suspended</span> <span class="nx">or</span> <span class="nx">active</span>        <span class="c1">// if the task is under the control of a worker</span>
+  <span class="nl">_completion_status</span> <span class="p">:</span> <span class="nx">success</span> <span class="nx">or</span> <span class="nx">failure</span>   <span class="c1">// if the test is completed</span>
+  <span class="nl">_completed_on</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:26:33Z'</span>    <span class="c1">// if the test is completed</span>
 
 <span class="p">}</span>
 </code></pre>
@@ -213,28 +213,29 @@ Task does not exist.
 
 <p>This command shows chronological history of events and some additional timing information for selected task</p>
 <pre class="highlight javascript"><code><span class="p">{</span>
-  <span class="nl">events</span> <span class="p">:</span> <span class="p">[</span>         <span class="err">#</span> <span class="nx">complete</span> <span class="nx">chronoligical</span> <span class="nx">history</span> <span class="nx">of</span> <span class="nx">events</span>
-    <span class="p">{</span> <span class="nl">when</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:31:33Z'</span><span class="p">,</span> <span class="nx">who</span> <span class="err">:</span> <span class="s1">'joe@ezhome.com'</span><span class="p">,</span> <span class="nx">what</span> <span class="err">:</span> <span class="s1">'grab'</span> <span class="p">},</span>
+  <span class="nl">events</span> <span class="p">:</span> <span class="p">[</span>         <span class="c1">// complete chronoligical history of events</span>
+    <span class="p">{</span> <span class="na">when</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:31:33Z'</span><span class="p">,</span> <span class="na">who</span> <span class="p">:</span> <span class="s1">'joe@ezhome.com'</span><span class="p">,</span> <span class="na">what</span> <span class="p">:</span> <span class="s1">'grab'</span> <span class="p">},</span>
     <span class="p">{</span> <span class="na">when</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:31:33Z'</span><span class="p">,</span> <span class="na">who</span> <span class="p">:</span> <span class="s1">'joe@ezhome.com'</span><span class="p">,</span> <span class="na">what</span> <span class="p">:</span> <span class="s1">'grab'</span> <span class="p">},</span>
     <span class="p">{</span> <span class="na">when</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:31:33Z'</span><span class="p">,</span> <span class="na">who</span> <span class="p">:</span> <span class="s1">'joe@ezhome.com'</span><span class="p">,</span> <span class="na">what</span> <span class="p">:</span> <span class="s1">'grab'</span> <span class="p">},</span>
     <span class="p">{</span> <span class="na">when</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:31:33Z'</span><span class="p">,</span> <span class="na">who</span> <span class="p">:</span> <span class="s1">'joe@ezhome.com'</span><span class="p">,</span> <span class="na">what</span> <span class="p">:</span> <span class="s1">'grab'</span> <span class="p">},</span>
     <span class="p">{</span> <span class="na">when</span> <span class="p">:</span> <span class="s1">'2015-11-20T17:31:33Z'</span><span class="p">,</span> <span class="na">who</span> <span class="p">:</span> <span class="s1">'joe@ezhome.com'</span><span class="p">,</span> <span class="na">what</span> <span class="p">:</span> <span class="s1">'grab'</span> <span class="p">},</span>
   <span class="p">]</span>
 
-  <span class="err">#</span> <span class="nx">some</span> <span class="nx">aggregates</span> <span class="nx">on</span> <span class="nx">top</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">history</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">events</span>
-  <span class="nx">time_elapsed</span>       <span class="err">#</span> <span class="nx">time</span> <span class="nx">since</span> <span class="nx">first</span> <span class="nx">submitted</span>
-  <span class="nx">time_til_deadline</span>  <span class="err">#</span> 
-  <span class="nx">time_worked_on</span>     <span class="err">#</span> <span class="nx">time</span> <span class="nx">the</span> <span class="nx">task</span> <span class="nx">has</span> <span class="nx">spent</span> <span class="nx">being</span> <span class="nx">the</span> <span class="nx">active</span> <span class="nx">task</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">worker</span> <span class="p">(</span><span class="nx">only</span> <span class="k">if</span> <span class="k">in</span><span class="o">-</span><span class="nx">progress</span><span class="p">)</span>
-  <span class="nx">time_suspended</span>     <span class="err">#</span> <span class="nx">time</span> <span class="nx">the</span> <span class="nx">task</span> <span class="nx">has</span> <span class="nx">spent</span> <span class="nx">suspended</span> <span class="nx">by</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">worker</span> <span class="p">(</span><span class="nx">only</span> <span class="k">if</span> <span class="k">in</span><span class="o">-</span><span class="nx">progress</span><span class="p">)</span>
-  <span class="nx">time_queued</span>        <span class="err">#</span> <span class="nx">total</span> <span class="nx">time</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">queue</span>
-  <span class="nx">time_rejected</span>      <span class="err">#</span> <span class="nx">total</span> <span class="nx">time</span> <span class="nx">under</span> <span class="nx">the</span> <span class="nx">control</span> <span class="nx">of</span> <span class="nx">users</span> <span class="nx">that</span> <span class="nx">eventually</span> <span class="nx">released</span> <span class="nx">the</span> <span class="nx">task</span> <span class="nx">without</span> <span class="nx">completing</span> <span class="nx">it</span>
-  <span class="nx">times_rejected</span>     <span class="err">#</span> <span class="nx">how</span> <span class="nx">many</span> <span class="nx">times</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">task</span> <span class="nx">has</span> <span class="nx">been</span> <span class="nx">rejected</span> <span class="nx">by</span> <span class="nx">prior</span> <span class="nx">users</span>
+  <span class="c1">// some aggregates on top of the history of the events</span>
+  <span class="nx">time_elapsed</span>       <span class="c1">// time since first submitted</span>
+  <span class="nx">time_til_deadline</span>
+  <span class="nx">time_worked_on</span>     <span class="c1">//time the task has spent being the active task of the current worker (only if in-progress)</span>
+  <span class="nx">time_suspended</span>     <span class="c1">// time the task has spent suspended by the current worker (only if in-progress)</span>
+  <span class="nx">time_queued</span>        <span class="c1">// total time in the queue</span>
+  <span class="nx">time_rejected</span>      <span class="c1">// total time under the control of users that eventually released the task without completing it</span>
+  <span class="nx">times_rejected</span>     <span class="c1">// how many times the current task has been rejected by prior users</span>
 <span class="p">}</span>
 </code></pre>
 
 <h2 id="tasks-queued">/tasks/queued</h2>
 
-<h3 id="get-tasks-queued">GET /tasks/queued
+<h3 id="get-tasks-queued">GET /tasks/queued</h3>
+
 <p>Returns a list of tasks, which state is &ldquo;queued&rdquo;. Maximum 100 tasks
 <code class="prettyprint">
 returns array in the same format as GET /tasks
@@ -255,23 +256,19 @@ returns array in the the same format as GET /tasks
 
 <h2 id="post-workers">POST /workers</h2>
 
-<p>Login current user<br/>
-request:</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
-  <span class="nl">id</span> <span class="p">:</span> <span class="nx">odysseas</span><span class="err">@</span><span class="nx">ezhome</span><span class="p">.</span><span class="nx">com</span>
+<p>Login current user<br/></p>
+<pre class="highlight javascript"><code><span class="nx">request</span><span class="err">:</span>
+<span class="p">{</span>
+  <span class="nl">id</span> <span class="p">:</span> <span class="s1">'odysseas@ezhome.com'</span>
 <span class="p">}</span>
-</code></pre>
-
-<p>returns:<br/>
-if user tries to login from slack</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
+<span class="nl">returns</span><span class="p">:</span>
+<span class="k">if</span> <span class="nx">user</span> <span class="nx">tries</span> <span class="nx">to</span> <span class="nx">login</span> <span class="nx">from</span> <span class="nx">slack</span>
+<span class="p">{</span>
     <span class="nl">text</span><span class="p">:</span> <span class="s1">'You are now logged in! You can start working.'</span>
 <span class="p">}</span>
-</code></pre>
-
-<p>else</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
-  <span class="nl">token</span><span class="p">:</span> <span class="nx">uuid</span>
+<span class="k">else</span>
+<span class="p">{</span>
+  <span class="na">token</span><span class="p">:</span> <span class="nx">uuid</span>
 <span class="p">}</span>
 </code></pre>
 
@@ -336,19 +333,20 @@ returns informational messages
 
 <p>Loads user info from database and returns it</p>
 <pre class="highlight javascript"><code><span class="p">{</span>
-    <span class="nl">userid</span> <span class="p">:</span> <span class="nx">mail</span><span class="err">@</span><span class="nx">email</span><span class="p">.</span><span class="nx">com</span>
+    <span class="nl">userid</span> <span class="p">:</span> <span class="s1">'mail@email.com'</span>
     <span class="nl">loggedin_on</span> <span class="p">:</span> <span class="nx">date</span>
     <span class="nl">status</span><span class="p">:</span> <span class="s1">'loggedout/loggedin'</span>
   <span class="p">}</span>
 </code></pre>
 
-<h2 id="workers-loggedin">/workers/loggedin
-get-workers-loggedin&quot;>GET /workers/loggedin</h3>
+<h2 id="workers-loggedin">/workers/loggedin</h2>
+
+<h3 id="get-workers-loggedin">GET /workers/loggedin</h3>
 
 <p>Returns array containing currently logged users</p>
 <pre class="highlight javascript"><code><span class="p">[</span>
     <span class="p">{</span>
-        <span class="na">userid</span> <span class="p">:</span> <span class="nx">mail</span><span class="err">@</span><span class="nx">email</span><span class="p">.</span><span class="nx">com</span>
+        <span class="na">userid</span> <span class="p">:</span> <span class="s1">'mail@email.com'</span>
         <span class="na">loggedin_on</span> <span class="p">:</span> <span class="nx">date</span>
         <span class="na">status</span><span class="p">:</span> <span class="s1">'loggedout/loggedin'</span>
     <span class="p">},</span>
@@ -359,6 +357,15 @@ get-workers-loggedin&quot;>GET /workers/loggedin</h3>
 <h1 id="events">/events</h1>
 
 <h2 id="get-events-user-user-amp-type-type-amp-ampn-n-amp-task-task_id">GET /events?user=user&amp;type=type&amp;ampn=N&amp;task=task_id</h2>
+<pre class="highlight javascript"><code><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="na">user</span><span class="p">:</span> <span class="s1">'user@email.com'</span><span class="p">,</span>
+        <span class="na">date</span><span class="p">:</span> <span class="nx">date</span><span class="p">,</span>
+        <span class="na">action</span><span class="p">:</span> <span class="s1">'action string'</span><span class="p">,</span>
+        <span class="na">task_id</span><span class="p">:</span> <span class="nx">task_id</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</code></pre>
 
 <p>Returns not more than N events in chronological order with event type=type for user=user or for task=task_id.
 If user is set than task is ignored.<br/>
@@ -379,15 +386,6 @@ Event type must be one of the following string:</p>
 <li>login</li>
 <li>logout</li>
 </ul>
-<pre class="highlight javascript"><code><span class="p">[</span>
-    <span class="p">{</span>
-        <span class="na">user</span><span class="p">:</span> <span class="s1">'user@email.com'</span><span class="p">,</span>
-        <span class="na">date</span><span class="p">:</span> <span class="nx">date</span><span class="p">,</span>
-        <span class="na">action</span><span class="p">:</span> <span class="s1">'action string'</span><span class="p">,</span>
-        <span class="na">task_id</span><span class="p">:</span> <span class="nx">task_id</span>
-    <span class="p">}</span>
-<span class="p">]</span>
-</code></pre>
 
       </div>
       <div class="dark-box">
